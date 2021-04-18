@@ -32,4 +32,12 @@ public class BookController {
     public List<Book> search(String text){
         return bookService.searchBooks(text);
     }
+
+    public List<Book> findByAuthor(Long id) {
+        return bookService.findBooksByAuthor(id);
+    }
+
+    public List<Book> findByGenre(Long id) {
+        return bookService.findBooksByGenre(id);
+    }
 }

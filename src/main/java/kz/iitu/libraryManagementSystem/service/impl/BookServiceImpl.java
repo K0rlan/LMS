@@ -48,4 +48,14 @@ public class BookServiceImpl implements BookService {
     public void deleteBook(Long id) {
         bookRepository.deleteById(id);
     }
+
+    @Override
+    public List<Book> findBooksByAuthor(Long id) {
+       return bookRepository.findByAuthor(id);
+    }
+
+    @Override
+    public List<Book> findBooksByGenre(Long id) {
+        return bookRepository.findByGenre(id);
+    }
 }
