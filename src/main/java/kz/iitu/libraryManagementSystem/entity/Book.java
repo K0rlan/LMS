@@ -1,6 +1,8 @@
 package kz.iitu.libraryManagementSystem.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +16,12 @@ public class Book {
     private String book_name;
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name="author_id", nullable=false)
+    @Column(name = "author_id")
+    private Long authorId;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonIgnore
+    @JoinColumn(name = "author_id", insertable = false, updatable = false)
     private Author author;
 
     @ManyToOne
@@ -31,6 +37,14 @@ public class Book {
         this.description = description;
         this.author = author;
         this.genres = genre;
+    }
+    
+    public Long getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
     }
 
     public Long getBook_id() {

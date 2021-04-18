@@ -13,7 +13,7 @@ public class Genres {
     private Long genre_id;
     private String genre_name;
 
-    @OneToMany(mappedBy="genres")
+    @OneToMany(mappedBy="genres", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private List<Book> books = new ArrayList<>();
 
     public Genres(String genre_name) {
