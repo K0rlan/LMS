@@ -53,8 +53,8 @@ public class BookServiceImpl implements BookService {
        return bookRepository.findByAuthor(id);
     }
 
-    @Override
-    public List<Book> findBooksByGenre(Long id) {
-        return bookRepository.findByGenre(id);
-    }
+//    @Override
+//    public List<Book> findBooksByGenre(Long id) {
+//        return bookRepository.findByGenre(id);
+//    }
 }
